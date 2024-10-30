@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container"><img class="logo" src="{% static "img/logo.png"%}"/></div>
+        
+        <div class="popup">
+            <img src="{% static 'img/tick.png' %}" alt="">
+            <h2>Weldone</h2>
+            <p>You have successfully submitted your BioData</p>
+            <button><a href="{% url 'store_detail' %}">Click Here to continue</a></button>
+        </div>
+
+    </div>
+    
+</body>
+</html>

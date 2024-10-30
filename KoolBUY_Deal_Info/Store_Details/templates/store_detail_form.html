@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Detail Form</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="{% static 'css/bio_data.css' %}">
+</head>
+<body>
+    <div class="logo-container"><img class="logo" src="{% static "img/logo.png"%}"/></div>
+    <div class="container">
+        <h1>Store Detail Form</h1>
+
+        <!-- Error display block (optional) -->
+        {% if error %}
+            <div class="error-message">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Form starts here -->
+        <form id="store-detail-form" method="post" action="{% url 'store_detail' %}">
+
+
+
+            {% csrf_token %}
+
+            <!-- BioData Selection -->
+            <div class="field">
+                <label for="bio_data">Select BioData</label>
+                <select id="bio_data" name="bio_data" required>
+                    {% for bio in bio_data_list %}
+                        <option value="{{ bio.id }}">{{ bio.first_name }}-{{ bio.phone_number}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+            <!-- Sales Agent Name -->
+            <div class="form-section">
+                <div class="field">
+                    <label for="sales_agent">Sales Agent Name</label>
+                    <select id="sales_agent" name="sales_agent" required>
+                        <option value="Ademola Bukola">Ademola Bukola</option>
+                        <option value="Akande Oluwaseun">Akande Oluwaseun</option>
+                        <option value="Adeleke Shakiru">Adeleke Shakiru</option>
+                        <option value="Blessing John">Blessing John</option>
+                    </select>
+                </div>
+
+                <!-- Product Usage -->
+                <div class="field">
+                    <label>Product Usage</label>
+                    <label>
+                        <input type="radio" name="product_usage" value="D" required> Domestic
+                    </label>
+                    <label>
+                        <input type="radio" name="product_usage" value="C" required> Commercial
+                    </label>
+                </div>
+
+                <!-- Store Name -->
+                <div class="field">
+                    <label for="store_name">What store are you purchasing from?</label>
+                    <select id="store_name" name="store_name" required>
+                        <option value="Store 1">Store 1</option>
+                        <option value="Store 2">Store 2</option>
+                        <option value="Store 3">Store 3</option>
+                    </select>
+                </div>
+
+                <!-- Brand -->
+                <div class="field">
+                    <label for="brand">Brand</label>
+                    <select id="brand" name="brand" required>
+                        <option value="KOOLBOKS">KOOLBOKS</option>
+                        <option value="BRUHM">BRUHM</option>
+                        <option value="SCANFROST">SCANFROST</option>
+                        <option value="LG">LG</option>
+                    </select>
+                </div>
+
+                <!-- Freezer Size -->
+                <div class="field">
+                    <label for="freezer_size">Freezer Size</label>
+                    <input type="text" id="freezer_size" name="freezer_size" required>
+                </div>
+
+                <!-- Reference/KB Number -->
+                <div class="field">
+                    <label for="reference_kb">Reference/KB Number</label>
+                    <input type="text" id="reference_kb" name="reference_kb" required>
+                </div>
+
+                <!-- Category -->
+                <div class="field">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="CHEST FREEZER">CHEST FREEZER</option>
+                        <option value="SIDE BY SIDE">SIDE BY SIDE</option>
+                        <option value="SINGLE DOOR">SINGLE DOOR</option>
+                    </select>
+                </div>
+
+                <!-- Who are you selling for? -->
+                <div class="field">
+                    <label for="selling_for">Who are you selling for?</label>
+                    <select id="selling_for" name="selling_for" required>
+                        <option value="Koolbuy partner store">Koolbuy partner store</option>
+                        <option value="Kool Assembly">Kool Assembly</option>
+                        <option value="Mchris stores">Mchris stores</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-section">
+                <button type="submit"><a href= {% url 'store_detail_submit' %}>NEXT</a></button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Optional JavaScript to handle form validation or extra behaviors -->
+    <script src="{% static 'js/bio_data.js' %}"></script>
+</body>
+</html>

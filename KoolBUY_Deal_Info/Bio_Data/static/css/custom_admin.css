@@ -1,0 +1,12 @@
+/* custom_admin.css */
+
+/* Target the logo in the admin header and login screen */
+#header-logo {
+    max-width: 150px;  /* Adjust this value as needed */
+    height: auto;
+}
+
+#login-logo {
+    max-width: 150px;  /* Adjust this value as needed */
+    height: auto;
+}

@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KoolBuy Deal Information</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"> <!-- Link to external CSS -->
+</head>
+<body>
+
+    <div class="logo-container"><img class="logo" src="{% static "img/logo.png"%}"/></div>
+    
+    <div class="container">
+        <div class="divTitle"><em class="frmTitle" style="text-align:center">KoolBuy Deal Information</em></div>
+        <!-- Navigation Section -->
+        {% comment %} <nav class="top-navigation">
+            <ul>
+                <li><a href="#">1 WELCOME</a></li>
+                <li><a href="#">2 BIO DATA</a></li>
+                <li><a href="#">3 STORE/ FREEZER DETAILS</a></li>
+                <li><a href="#">4 KOOL ASSEMBLY BILLING MODEL</a></li>
+                <li><a href="#">5 MERCHANDISER/ PARTNER STORE DEALS</a></li>
+                <li><a href="#">6 ACCOUNTS DETAILS</a></li>
+                <li><a href="#">7 OTHER INFORMATION</a></li>
+                <li><a href="#">8 KOOLBUY HIRE PURCHASE FORM</a></li>
+            </ul>
+        </nav> {% endcomment %}
+
+        <!-- Main Content Section -->
+        <div class="main-content">
+            <h5>Welcome to KoolBuy’s BNPL (Buy Now, Pay Later)!</h5>
+
+            <p>At Koolbuy, we’re committed to making your shopping experience as seamless and flexible as possible. With our Buy Now, Pay Later (BNPL) option, you can enjoy your purchases today and pay for them later. To get started with this convenient payment solution, there are a few details we need to gather from you.</p>
+
+            <h2>What You’ll Need to Provide</h2>
+
+            <ul>
+                <li><strong>Means of Identification</strong>: A valid government-issued ID (e.g., passport, driver’s license, national ID card).</li>
+                <li><strong>National Identification Number (NIN)</strong>: Your unique NIN, which helps us verify your identity.</li>
+                <li><strong>Bank Verification Number (BVN)</strong>: Your BVN to confirm your bank account details and prevent fraud.</li>
+                <li><strong>Bank Statement</strong>: A statement covering a minimum of 6 months from your primary bank account.</li>
+                <li><strong>KYC Pictures</strong> (4 KYC Pictures):
+                    <ul>
+                        <li>An image of the frontal view of your house showing your house number (Domestic Purchase Only).</li>
+                        <li>An image of you standing in front of your store (Commercial Purchase).</li>
+                        <li>An image of you inside the store with the goods you sell (Commercial Purchase).</li>
+                        <li>A clear client photo.</li>
+                    </ul>
+                </li>
+                <li><strong>Guarantor's NIN Number and Valid Means of Identification</strong> (NIN, Passport, or Driver’s License):
+                    <ul>
+                        <li>Guarantor's name and phone number (Guarantor cannot be a family member).</li>
+                    </ul>
+                </li>
+                <li><strong>Two Referees' Names and Phone Numbers</strong></li>
+            </ul>
+
+            <p>Gathering these details will help us process your BNPL application efficiently and securely. If you have any questions or need assistance, our customer support team is here to help.</p>
+
+            <p>Thank you for choosing KoolBuy! We look forward to enhancing your shopping experience with our flexible payment options.</p>
+
+            <!-- Buttons -->
+            <div class="form-actions">
+                <button class="btn save-continue"><a style="text-decoration: none; color:white" href="{% url 'bio_data'%}">Click to Continue</a></button>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/bio_data.js' %}"></script>
+</body>
+</html>

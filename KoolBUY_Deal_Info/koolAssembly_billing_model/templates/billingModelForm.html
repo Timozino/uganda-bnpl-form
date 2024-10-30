@@ -1,0 +1,332 @@
+ {% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Model Form</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="{% static 'css/billing_model.css' %}">
+</head>
+<body>
+    <div class="logo-container"><img class="logo" src="{% static 'img/logo.png' %}"/></div>
+    <div class="container">
+        <h1>Billing Model Form</h1>
+        
+        <!-- Error display block (optional) -->
+        {% if error %}
+            <div class="error-message">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Form starts here -->
+        <form id="billing-model-form" method="post" action="{% url 'billing_model' %}">
+            {% csrf_token %}
+
+            <!-- BioData Selection -->
+            <div class="field">
+                <label for="bio_data">For Which Client</label>
+                <select id="bio_data" name="bio_data" required>
+                    {% for bio in bio_data_list %}
+                        <option value="{{ bio.id }}">{{ bio.first_name }}-{{ bio.phone_number}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Billing Model Choice -->
+            <div class="form-section">
+                <h2>Billing Model</h2>
+                <div class="field">
+                    <label for="billing_model">Select Billing Model</label>
+                    <select id="billing_model" name="billing_model" required>
+                        <option value="">Select...</option>
+                        <option value="Paygo">Paygo (Kool Kredit)</option>
+                        <option value="Outright">Outright</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Paygo Fields -->
+            <div id="paygo-fields" style="display: none;">
+                <div class="form-section">
+                    <h2>Paygo (Kool Kredit) Details</h2>
+                    <div class="field">
+                        <label for="paygo_config">Paygo Configuration</label>
+                        <select id="paygo_config" name="paygo_config">
+                            {% for config in paygo_configs %}
+                                <option value="{{ config.id }}">{{ config }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="paygo_freezer_price">Freezer Price</label>
+                        <input type="number" id="paygo_freezer_price" name="paygo_freezer_price">
+                    </div>
+                    <div class="field">
+                        <label for="repayment_plan">Repayment Plan</label>
+                        <select id="repayment_plan" name="repayment_plan">
+                            <option value="2_months">2 months instalment</option>
+                            <option value="5_months">5 months instalment</option>
+                            <option value="11_months">11 months instalment</option>
+                            <option value="17_months">17 months instalment</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="down_payment">Down Payment</label>
+                        <input type="number" id="down_payment" name="down_payment">
+                    </div>
+                    <div class="field">
+                        <label for="monthly_instalment">Monthly Instalment</label>
+                        <input type="number" id="monthly_instalment" name="monthly_instalment">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outright Fields -->
+            <div id="outright-fields" style="display: none;">
+                <div class="form-section">
+                    <h2>Outright Purchase Details</h2>
+                    <div class="field">
+                        <label for="sales_agent">Sales Agent</label>
+                        <select id="sales_agent" name="sales_agent">
+                            {% for agent in sales_agents %}
+                                <option value="{{ agent.id }}">{{ agent }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="outright_config">Outright Configuration</label>
+                        <select id="outright_config" name="outright_config">
+                            {% for config in outright_configs %}
+                                <option value="{{ config.id }}">{{ config }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="outright_freezer_price">Freezer Price</label>
+                        <input type="number" id="outright_freezer_price" name="outright_freezer_price">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-section">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Link to external JavaScript to handle conditional display -->
+    <script src="{% static 'js/billing_model.js' %}"></script>
+</body>
+</html> 
+
+ {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Model Form</title>
+    <link rel="stylesheet" href="{% static 'css/billing_model.css' %}">
+</head>
+<body>
+    <div class="logo-container"><img class="logo" src="{% static 'img/logo.png' %}"/></div>
+    <div class="container">
+        <h1>Billing Model Form</h1>
+        
+        {% if error %}
+            <div class="error-message">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+
+        <form id="billing-model-form" method="post" action="{% url 'billing_model' %}">
+            {% csrf_token %}
+
+            <div class="field">
+                <label for="bio_data">For Which Client</label>
+                <select id="bio_data" name="bio_data" required>
+                    {% for bio in bio_data_list %}
+                        <option value="{{ bio.id }}">{{ bio.first_name }}-{{ bio.phone_number }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-section">
+                <h2>Billing Model</h2>
+                <div class="field">
+                    <label for="billing_model">Select Billing Model</label>
+                    <select id="billing_model" name="billing_model" required onchange="toggleFields()">
+                        <option value="">Select...</option>
+                        <option value="Paygo">Paygo (Kool Kredit)</option>
+                        <option value="Outright">Outright</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Paygo Fields -->
+            <div id="paygo-fields" style="display: none;">
+                <div class="form-section">
+                    <h2>Paygo (Kool Kredit) Details</h2>
+                    <div class="field">
+                        <label for="paygo_config">Paygo Configuration</label>
+                        <select id="paygo_config" name="paygo_config" onchange="updatePaygoFields()">
+                            <option value="">Select...</option>
+                            {% for config in paygo_configs %}
+                                <option value="{{ config }}">{{ config }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="paygo_freezer_price">Freezer Price</label>
+                        <input type="number" id="paygo_freezer_price" name="paygo_freezer_price" readonly>
+                    </div>
+                    <div class="field">
+                        <label for="repayment_plan">Repayment Plan</label>
+                        <select id="repayment_plan" name="repayment_plan" onchange="calculateLoan()">
+                            <option value="2_months">2 months instalment</option>
+                            <option value="5_months">5 months instalment</option>
+                            <option value="11_months">11 months instalment</option>
+                            <option value="17_months">17 months instalment</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="down_payment">Down Payment</label>
+                        <input type="number" id="down_payment" name="down_payment" readonly>
+                    </div>
+                    <div class="field">
+                        <label for="monthly_instalment">Monthly Instalment</label>
+                        <input type="number" id="monthly_instalment" name="monthly_instalment" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outright Fields -->
+            <div id="outright-fields" style="display: none;">
+                <div class="form-section">
+                    <h2>Outright Purchase Details</h2>
+                    <div class="field">
+                        <label for="sales_agent">Sales Agent</label>
+                        <select id="sales_agent" name="sales_agent">
+                            {% for agent in sales_agents %}
+                                <option value="{{ agent.id }}">{{ agent }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="outright_config">Outright Configuration</label>
+                        <select id="outright_config" name="outright_config">
+                            {% for config in outright_configs %}
+                                <option value="{{ config.id }}">{{ config }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="outright_freezer_price">Freezer Price</label>
+                        <input type="number" id="outright_freezer_price" name="outright_freezer_price">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <button type="submit">NEXT</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const downPaymentPercentage = {{ down_payment_percentage }};
+        const managementFeePercentage = {{ management_fee_percentage }};
+        const recurrentPercentage = {{ recurrent_percentage }};
+
+        function toggleFields() {
+            const billingModel = document.getElementById("billing_model").value;
+            const paygoFields = document.getElementById("paygo-fields");
+            const outrightFields = document.getElementById("outright-fields");
+
+            if (billingModel === "Paygo") {
+                paygoFields.style.display = "block";
+                outrightFields.style.display = "none";
+            } else if (billingModel === "Outright") {
+                paygoFields.style.display = "none";
+                outrightFields.style.display = "block";
+            } else {
+                paygoFields.style.display = "none";
+                outrightFields.style.display = "none";
+            }
+        }
+
+        function updatePaygoFields() {
+            const paygoConfig = document.getElementById("paygo_config").value;
+            const paygoFreezerPriceInput = document.getElementById("paygo_freezer_price");
+            const downPaymentInput = document.getElementById("down_payment");
+            const monthlyInstalmentInput = document.getElementById("monthly_instalment");
+            const repaymentPlan = document.getElementById("repayment_plan").value;
+
+            // Extracting price from selected configuration
+            const priceRegex = /UGX([\d,.]+)/;
+            const match = priceRegex.exec(paygoConfig);
+            if (match) {
+                const paygoFreezerPrice = parseFloat(match[1].replace(/,/g, ''));
+                paygoFreezerPriceInput.value = paygoFreezerPrice;
+
+                calculateLoan(paygoFreezerPrice, repaymentPlan);
+            } else {
+                paygoFreezerPriceInput.value = '';
+                downPaymentInput.value = '';
+                monthlyInstalmentInput.value = '';
+            }
+        }
+
+        function calculateLoan(paygoFreezerPrice, repaymentPlan) {
+            if (!paygoFreezerPrice) return;
+
+            // Down Payment Calculation
+            const downPayment = (paygoFreezerPrice * downPaymentPercentage / 100) + (paygoFreezerPrice * managementFeePercentage / 100);
+            const remainingPrice = paygoFreezerPrice - (paygoFreezerPrice * downPaymentPercentage / 100);
+
+            // Map repayment plan choices to numeric values
+            const repaymentPlanMapping = {
+                '2_months': 2,
+                '5_months': 5,
+                '11_months': 11,
+                '17_months': 17,
+            };
+            const repaymentPlanValue = repaymentPlanMapping[repaymentPlan] || 1;
+
+            // Calculate the recurrent cost over the repayment plan
+            const recurrentCost = remainingPrice * (recurrentPercentage / 100) * repaymentPlanValue;
+
+            // Calculate monthly instalment
+            const monthlyInstalment = (remainingPrice + recurrentCost) / repaymentPlanValue;
+
+            // Update the fields
+            document.getElementById("down_payment").value = downPayment.toFixed(2);
+            document.getElementById("monthly_instalment").value = monthlyInstalment.toFixed(2);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    background: #ff5821;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup{
+    width: 400px;
+    background: white;
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+}
+.popup img{
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.popup h2{
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+}
+
+.popup button{
+    width:100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #6fd649;
+    color : white;
+    border: 0;
+    outline: none;
+    font-size:18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+}
+
+/* .popup button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+} */
+
+.popup button a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Reset some basic default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Logo container */
+.logo-container {
+    text-align: center;
+    margin: 20px;
+    margin-left: 120px;
+    padding: 10px;
+    /* border: 2px solid #333; Optional border around the logo */
+    display: inline-block;
+    border-radius: 15px; /* Make corners rounded */
+    background: linear-gradient(135deg, #fff, #fff); /* Add gradient background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+/* Logo image styling */
+.logo {
+    max-width: 200px;
+    height: auto;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth hover effect */
+    opacity: 0.9; /* Slight transparency */
+}
+
+/* Hover effect */
+.logo-container:hover .logo {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    opacity: 1; /* Full opacity on hover */
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+    .logo-container {
+        padding: 5px;
+        border-radius: 10px;
+    }
+    
+    .logo {
+        max-width: 100px;
+    }
+}
+
+
+.logo-container {
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 2px;
+    margin-left: 120px;
+    
+    /* margin-left: 10px; */
+    padding: 10px;
+    /* border: 2px solid #333; Optional border around the logo */
+    display: inline-block;
+    border-radius: 15px; /* Make corners rounded */
+    background: linear-gradient(135deg, #fff, #fff); /* Add gradient background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+/* Logo image styling */
+.logo {
+    max-width: 200px;
+    height: auto;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth hover effect */
+    opacity: 0.9; /* Slight transparency */
+}
+
+/* Hover effect */
+.logo-container:hover .logo {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    opacity: 1; /* Full opacity on hover */
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+    .logo-container {
+        padding: 5px;
+        border-radius: 10px;
+    }
+    
+    .logo {
+        max-width: 100px;
+    }
+}

@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #cf4809;  /* Orange background */
+    color: white;  /* White text */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #000;  /* Black form background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    color: white;  /* White heading */
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+.field label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: white;  /* White text for labels */
+}
+
+.field input, .field select {
+    width: 70%;  /* Ensure all fields have the same width */
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #cf4809;  /* Orange border for input fields */
+    border-radius: 4px;
+    background-color: #333;  /* Dark background for input fields */
+    color: white;  /* White text in input fields */
+    display: block;
+    margin: auto;  /* Center align the fields */
+}
+
+button {
+    width: 50%;  /* Ensure button matches the width of the fields */
+    padding: 12px;
+    background-color: #cf4809;  /* Orange background for button */
+    color: white;  /* White text for button */
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: auto;  /* Center align the button */
+}
+
+button:hover {
+    background-color: orangered;  /* Darker orange on hover */
+}
+
+.error-message {
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+    margin-bottom: 20px;
+    padding: 10px;
+    color: red;
+    font-size: 14px;
+}
+
+
+/* Reset some basic default styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+/* Logo container */
+.logo-container {
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 2px;
+    margin-left: 120px;
+    
+    /* margin-left: 10px; */
+    padding: 10px;
+    /* border: 2px solid #333; Optional border around the logo */
+    display: inline-block;
+    border-radius: 15px; /* Make corners rounded */
+    background: linear-gradient(135deg, #fff, #fff); /* Add gradient background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+/* Logo image styling */
+.logo {
+    max-width: 200px;
+    height: auto;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth hover effect */
+    opacity: 0.9; /* Slight transparency */
+}
+
+/* Hover effect */
+.logo-container:hover .logo {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    opacity: 1; /* Full opacity on hover */
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+    .logo-container {
+        padding: 5px;
+        border-radius: 10px;
+    }
+    
+    .logo {
+        max-width: 100px;
+    }
+}

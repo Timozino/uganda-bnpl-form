@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details Form</title>
+    <link rel="stylesheet" href="{% static 'css/account_detail_form.css' %}"> <!-- External CSS -->
+    <script>
+        // JavaScript to handle showing/hiding the "Other Bank" field
+        function checkBankChoice() {
+            var bankSelect = document.getElementById('bank-name');
+            var otherBankField = document.getElementById('other-bank-name-field');
+            if (bankSelect.value === 'others') {
+                otherBankField.style.display = 'block';
+            } else {
+                otherBankField.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="logo-container">
+        <img class="logo" src="{% static "img/logo.png"%}"/>
+    </div>
+    <div class="container">
+        <h1>Enter Your Account Details</h1>
+        
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- Client Dropdown -->
+            <div class="field">
+                <label for="client">Select Client</label>
+                <select name="client" id="client" required>
+                    {% for client in clients %}
+                    <option value="{{ client.id }}">{{ client.first_name }} {{ client.last_name }} - {{ client.phone_number }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Smartphone availability -->
+            <div class="field">
+                <label for="smart_phone">Do you have a smartphone?</label>
+                <select name="smart_phone" id="smart_phone">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Product field -->
+            <div class="field">
+                <label for="product">Product</label>
+                <input type="text" name="product" id="product" required>
+            </div>
+
+            <!-- Outstanding loan field -->
+            <div class="field">
+                <label for="outstanding_loan">Do you have an outstanding loan?</label>
+                <select name="outstanding_loan" id="outstanding_loan">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Monthly income field -->
+            <div class="field">
+                <label for="monthly_income">Monthly Income (₦)</label>
+                <input type="number" name="monthly_income" id="monthly_income" step="0.01" required>
+            </div>
+
+            <!-- Bank name field -->
+            <div class="field">
+                <label for="bank-name">Select Your Bank</label>
+                <select name="bank_name" id="bank-name" onchange="checkBankChoice()" required>
+                    {% for value, label in bank_choices %}
+                    <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Other Bank Name field (hidden initially) -->
+            <div class="field" id="other-bank-name-field" style="display: none;">
+                <label for="other_bank_name">Other Bank Name</label>
+                <input type="text" name="other_bank_name" id="other_bank_name">
+            </div>
+
+            <!-- Bank account name field -->
+            <div class="field">
+                <label for="bank_account_name">Bank Account Name</label>
+                <input type="text" name="bank_account_name" id="bank_account_name" required>
+            </div>
+
+            <!-- BVN field -->
+            <div class="field">
+                <label for="bvn">BVN</label>
+                <input type="text" name="bvn" id="bvn" maxlength="11" required>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit">NEXT</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+
+{% comment %} <!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Detail Form</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/account_detail_form.css' %}">
+    <script>
+        // JavaScript to toggle the visibility of the "Other Bank" field
+        function toggleOtherBankField() {
+            var bankDropdown = document.getElementById('bank_name');
+            var otherBankField = document.getElementById('other_bank_field');
+            if (bankDropdown.value === 'others') {
+                otherBankField.style.display = 'block';
+            } else {
+                otherBankField.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="logo-container">
+        <img class="logo" src="{% static "img/logo.png"%}"/>
+    </div>
+
+    <div class="container">
+        <h1>Account Details Form</h1>
+
+        <form method="post" action="/your-action-url/">
+            {% csrf_token %}
+
+            <!-- Client (hidden, as it will be linked to the logged-in user) -->
+            <input type="hidden" name="client" value="{{ request.user }}">
+
+            <!-- Smart Phone Field -->
+            <div class="form-section">
+                <div class="field">
+                    <label for="smart_phone">Do you have a smartphone?</label>
+                    <select name="smart_phone" id="smart_phone">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+
+                <!-- Product -->
+                <div class="field">
+                    <label for="product">Product</label>
+                    <input type="text" name="product" id="product" required>
+                </div>
+
+                <!-- Outstanding Loan Field -->
+                <div class="field">
+                    <label for="outstanding_loan">Do you have an outstanding loan?</label>
+                    <select name="outstanding_loan" id="outstanding_loan">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+
+                <!-- Monthly Income -->
+                <div class="field">
+                    <label for="monthly_income">Monthly Income</label>
+                    <input type="number" name="monthly_income" id="monthly_income" required>
+                </div>
+
+                <!-- Bank Name -->
+                <div class="field">
+                    <label for="bank_name">Bank Name</label>
+                    <select name="bank_name" id="bank_name" onchange="toggleOtherBankField()">
+                        {% for bank in bank_choices %}
+                            <option value="{{ bank.0 }}">{{ bank.1 }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Conditional "Other Bank" Field (Initially hidden) -->
+                <div class="field" id="other_bank_field" style="display:none;">
+                    <label for="other_bank_name">Other Bank Name</label>
+                    <input type="text" name="other_bank_name" id="other_bank_name">
+                </div>
+
+                <!-- Bank Account Name -->
+                <div class="field">
+                    <label for="bank_account_name">Bank Account Name</label>
+                    <input type="text" name="bank_account_name" id="bank_account_name" required>
+                </div>
+
+                <!-- BVN (Bank Verification Number) -->
+                <div class="field">
+                    <label for="bvn">BVN (Bank Verification Number)</label>
+                    <input type="text" name="bvn" id="bvn" required>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="field">
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html> {% endcomment %}

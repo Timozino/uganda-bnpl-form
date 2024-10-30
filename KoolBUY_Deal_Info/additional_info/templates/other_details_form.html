@@ -1,0 +1,296 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Details Form</title>
+    <link rel="stylesheet" href="{% static 'css/other_details.css' %}"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container"><img class="logo" src="{% static 'img/logo.png' %}"/></div>
+        <h1>Submit Other Details</h1>
+        <form action="{% url 'info' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Client selection field -->
+            <div class="field">
+                <label for="client">Client</label>
+                <select name="client" id="client" required>
+                    {% for client in clients %}
+                        <option value="{{ client.id }}">{{ client.first_name }} {{ client.last_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Sales Agent selection field -->
+            <div class="field">
+                <label for="sales_agent">Sales Agent</label>
+                <select name="sales_agent" id="sales_agent" required>
+                    {% for agent in agents %}
+                        <option value="{{ agent.id }}">{{ agent.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Guarantor Fullname -->
+            <div class="field">
+                <label for="guarantor_fullname">Guarantor's Fullname</label>
+                <input type="text" name="guarantor_fullname" id="guarantor_fullname" required>
+            </div>
+
+            <!-- Guarantor Phone Number -->
+            <div class="field">
+                <label for="guarantor_phone">Guarantor's Phone Number</label>
+                <input type="tel" name="guarantor_phone" id="guarantor_phone" required>
+            </div>
+
+            <!-- Guarantor NIN -->
+            <div class="field">
+                <label for="guarantor_nin">Guarantor's NIN</label>
+                <input type="text" name="guarantor_nin" id="guarantor_nin" required>
+            </div>
+
+            <!-- Guarantor NIN Image (with device camera capture option) -->
+            <div class="field">
+                <label for="guarantor_nin_image">Guarantor's NIN Image</label>
+                <input type="file" name="guarantor_nin_image" id="guarantor_nin_image" accept="image/*" capture="environment" required>
+            </div>
+
+            <!-- Reason for Purchase -->
+            <div class="field">
+                <label for="reason_for_purchase">Reason for Purchase</label>
+                <textarea name="reason_for_purchase" id="reason_for_purchase" required></textarea>
+            </div>
+
+            <!-- Referee Fullname -->
+            <div class="field">
+                <label for="referee_fullname">Referee's Fullname</label>
+                <input type="text" name="referee_fullname" id="referee_fullname" required>
+            </div>
+
+            <!-- Referee Phone -->
+            <div class="field">
+                <label for="referee_phone">Referee's Phone Number</label>
+                <input type="tel" name="referee_phone" id="referee_phone" required>
+            </div>
+
+            <!-- Second Referee Fullname -->
+            <div class="field">
+                <label for="second_referee_fullname">Second Referee's Fullname</label>
+                <input type="text" name="second_referee_fullname" id="second_referee_fullname" required>
+            </div>
+
+            <!-- Second Referee Phone -->
+            <div class="field">
+                <label for="second_referee_phone">Second Referee's Phone Number</label>
+                <input type="tel" name="second_referee_phone" id="second_referee_phone" required>
+            </div>
+
+            <!-- Product Photo (with device camera capture option) -->
+            <div class="field">
+                <label for="product_photo">Product Photo</label>
+                <input type="file" name="product_photo" id="product_photo" accept="image/*" capture="environment" required>
+            </div>
+
+            <!-- Client's Photo (with device camera capture option) -->
+            <div class="field">
+                <label for="client_photo">Client's Photo</label>
+                <input type="file" name="client_photo" id="client_photo" accept="image/*" capture="environment" required>
+            </div>
+
+            <!-- Client's NIN Image (with device camera capture option) -->
+            <div class="field">
+                <label for="client_nin_image">Client's NIN Image</label>
+                <input type="file" name="client_nin_image" id="client_nin_image" accept="image/*" capture="environment" required>
+            </div>
+
+            <!-- Bank Statements (Image or PDF) -->
+            <div class="field">
+                <label for="bank_statements">Bank Statements (Image or PDF)</label>
+                <input type="file" name="bank_statements" id="bank_statements" accept="image/*,application/pdf">
+            </div>
+
+            <!-- Home Utility Bill (Image or PDF) -->
+            <div class="field">
+                <label for="home_utility_bill">Home Utility Bill (Image or PDF)</label>
+                <input type="file" name="home_utility_bill" id="home_utility_bill" accept="image/*,application/pdf">
+            </div>
+
+            <!-- Business Utility Bill (Image or PDF) -->
+            <div class="field">
+                <label for="business_utility_bill">Business Utility Bill (Image or PDF)</label>
+                <input type="file" name="business_utility_bill" id="business_utility_bill" accept="image/*,application/pdf">
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+
+
+
+
+
+
+
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Details Form</title>
+    <link rel="stylesheet" href="{% static 'css/other_details.css' %}"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container"><img class="logo" src="{% static "img/logo.png"%}"/></div>
+        <h1>Submit Other Details</h1>
+        <form action="{% url 'info' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Client selection field -->
+            <div class="field">
+                <label for="client">Client</label>
+                <select name="client" id="client">
+                    {% for client in clients %}
+                        <option value="{{ client.id }}">{{ client.first_name }} {{ client.last_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Sales Agent selection field -->
+            <div class="field">
+                <label for="sales_agent">Sales Agent</label>
+                <select name="sales_agent" id="sales_agent">
+                    {% for agent in agents %}
+                        <option value="{{ agent.id }}">{{ agent.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Guarantor Fullname -->
+            <div class="field">
+                <label for="guarantor_fullname">Guarantor's Fullname</label>
+                <input type="text" name="guarantor_fullname" id="guarantor_fullname" required>
+            </div>
+
+            <!-- Guarantor Phone Number -->
+            <div class="field">
+                <label for="guarantor_phone">Guarantor's Phone Number</label>
+                <input type="tel" name="guarantor_phone" id="guarantor_phone" required>
+            </div>
+
+            <!-- Guarantor NIN -->
+            <div class="field">
+                <label for="guarantor_nin">Guarantor's NIN</label>
+                <input type="text" name="guarantor_nin" id="guarantor_nin" required>
+            </div>
+
+            <!-- Guarantor NIN Image (with device camera capture option) -->
+            <div class="field">
+                <label for="guarantor_nin_image">Guarantor's NIN Image</label>
+                <input type="file" name="guarantor_nin_image" id="guarantor_nin_image" accept="image/*" capture="environment" required>
+            </div>
+
+            <!-- Reason for Purchase -->
+            <div class="field">
+                <label for="reason_for_purchase">Reason for Purchase</label>
+                <textarea name="reason_for_purchase" id="reason_for_purchase" required></textarea>
+            </div>
+
+            <!-- Referee Fullname -->
+            <div class="field">
+                <label for="referee_fullname">Referee's Fullname</label>
+                <input type="text" name="referee_fullname" id="referee_fullname" required>
+            </div>
+
+            <!-- Referee Phone -->
+            <div class="field">
+                <label for="referee_phone">Referee's Phone Number</label>
+                <input type="tel" name="referee_phone" id="referee_phone" required>
+            </div>
+
+            <!-- Second Referee Fullname -->
+            <div class="field">
+                <label for="second_referee_fullname">Second Referee's Fullname</label>
+                <input type="text" name="second_referee_fullname" id="second_referee_fullname" required>
+            </div>
+
+            <!-- Second Referee Phone -->
+            <div class="field">
+                <label for="second_referee_phone">Second Referee's Phone Number</label>
+                <input type="tel" name="second_referee_phone" id="second_referee_phone" required>
+            </div>
+
+            <!-- Product Photo (with device camera capture option) -->
+            <div class="field">
+                <label for="product_photo">Product Photo</label>
+                <input type="file" name="product_photo" id="product_photo" accept="image/*" capture="environment" required>
+            </div>
+
+            <!-- Client's Photo (with device camera capture option) -->
+            <div class="field">
+                <label for="client_photo">Client's Photo</label>
+                <input type="file" name="client_photo" id="client_photo" accept="image/*" capture="environment" required>
+            </div>
+
+            <!-- Client's NIN Image (with device camera capture option) -->
+            <div class="field">
+                <label for="client_nin_image">Client's NIN Image</label>
+                <input type="file" name="client_nin_image" id="client_nin_image" accept="image/*" capture="environment" required>
+            </div>
+
+            <!-- Bank Statements (Image or PDF) -->
+            <div class="field">
+                <label for="bank_statements">Bank Statements (Image or PDF)</label>
+                <input type="file" name="bank_statements" id="bank_statements" accept="image/*,application/pdf">
+            </div>
+
+            <!-- Home Utility Bill (Image or PDF) -->
+            <div class="field">
+                <label for="home_utility_bill">Home Utility Bill (Image or PDF)</label>
+                <input type="file" name="home_utility_bill" id="home_utility_bill" accept="image/*,application/pdf">
+            </div>
+
+            <!-- Business Utility Bill (Image or PDF) -->
+            <div class="field">
+                <label for="business_utility_bill">Business Utility Bill (Image or PDF)</label>
+                <input type="file" name="business_utility_bill" id="business_utility_bill" accept="image/*,application/pdf">
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>  {% endcomment %}

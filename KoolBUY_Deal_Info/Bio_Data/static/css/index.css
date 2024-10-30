@@ -1,0 +1,172 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container .divTitle .frmTitle{
+    font-family: MS Serif, New York, serif;
+    display: block;
+    text-align: "center" !important;
+    font-size: 37px;
+    color: #E9741C;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 20px;
+    
+
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+/* Navigation Bar Styling */
+.top-navigation {
+    background-color: #004080;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.top-navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-navigation li {
+    display: inline;
+}
+
+.top-navigation a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.top-navigation a:hover {
+    background-color: #003366;
+}
+
+/* Main Content Styling */
+.main-content h1 {
+    color: #444444;;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.main-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.main-content h2 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul ul {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+/* Button Styling */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.btn {
+    background-color: #004080;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #003366;
+}
+
+.save-continue {
+    background-color: #f39c12;
+}
+
+.save-continue:hover {
+    background-color: #e67e22;
+}
+
+/* Reset some basic default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Logo container */
+.logo-container {
+    text-align: center;
+    margin: 20px;
+    margin-left: 120px;
+    padding: 10px;
+    /* border: 2px solid #333; Optional border around the logo */
+    display: inline-block;
+    border-radius: 15px; /* Make corners rounded */
+    background: linear-gradient(135deg, #fff, #fff); /* Add gradient background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+/* Logo image styling */
+.logo {
+    max-width: 200px;
+    height: auto;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth hover effect */
+    opacity: 0.9; /* Slight transparency */
+}
+
+/* Hover effect */
+.logo-container:hover .logo {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    opacity: 1; /* Full opacity on hover */
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+    .logo-container {
+        padding: 5px;
+        border-radius: 10px;
+    }
+    
+    .logo {
+        max-width: 100px;
+    }
+}

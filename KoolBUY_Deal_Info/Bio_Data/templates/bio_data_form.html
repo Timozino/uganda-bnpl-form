@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata Form</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="{% static 'css/bio_data.css' %}">
+</head>
+<body>
+    <div class="logo-container"><img class="logo" src="{% static "img/logo.png"%}"/></div>
+    <div class="container">
+        <h1>Biodata Form</h1>
+        
+
+        <!-- Error display block (optional) -->
+        {% if error %}
+            <div class="error-message">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Form starts here -->
+        <form id="bio-data-form" method="post" action="{% url 'bio_data' %}">
+            {% csrf_token %}
+
+            <!-- Personal Info -->
+            <div class="form-section">
+                <h2>Personal Information</h2>
+                <div class="field">
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" name="first_name" required>
+                </div>
+                <div class="field">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" required>
+                </div>
+                <div class="field">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="date_of_birth">Date of Birth</label>
+                    <input type="date" id="date_of_birth" name="date_of_birth" required>
+                </div>
+
+                <div class="field">
+                    <label for="nin">National Identification Number (NIN)</label>
+                    <input type="text" id="nin" name="nin" required>
+                </div>
+
+                <!-- Marital Status Field -->
+                <div class="field">
+                    <label for="marital_status">Marital Status</label>
+                    <select id="marital_status" name="marital_status" required>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        
+                        <option value="widowed">Widowed</option>
+                    </select>
+                </div>
+
+                <!-- Number of Dependents Field -->
+                <div class="field">
+                    <label for="number_of_dependents">Number of Dependents</label>
+                    <input type="number" id="number_of_dependents" name="number_of_dependents" min="0" value="0" required>
+                </div>
+
+                <!-- Occupation Field -->
+                <div class="field">
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" name="occupation" required>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="form-section">
+                <h2>Contact Information</h2>
+                <div class="field">
+                    <label for="phone_number">Phone Number (+256)</label>
+                    <input type="text" id="phone_number" name="phone_number" required>
+                </div>
+                <div class="field">
+                    <label for="alternate_phone_number">Alternate Phone Number</label>
+                    <input type="text" id="alternate_phone_number" name="alternate_phone_number">
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="form-section">
+                <h2>Address</h2>
+                <div class="field">
+                    <label for="street_name">Street Name</label>
+                    <input type="text" id="street_name" name="street_name" required>
+                </div>
+                <div class="field">
+                    <label for="address_line_2">Address Line 2</label>
+                    <input type="text" id="address_line_2" name="address_line_2">
+                </div>
+                <div class="field">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="field">
+                    <label for="state">District</label>
+                    <input type="text" id="state" name="state" required>
+                </div>
+                <div class="field">
+                    <label for="postal_code">Postal Code</label>
+                    <input type="text" id="postal_code" name="postal_code" required>
+                </div>
+            </div>
+
+            <!-- Product Usage -->
+            <div class="form-section">
+                <h2>Product Usage</h2>
+                <div class="field">
+                    <label for="product_usage">Product Usage</label>
+                    <select id="product_usage" name="product_usage" required>
+                        <option value="D">Domestic</option>
+                        <option value="C">Commercial</option>
+                    </select>
+                </div>
+
+             <!-- Lead Source Field -->
+            <div class="field">
+                <label for="lead_source">Lead Source</label>
+                <select id="lead_source" name="lead_source" required>
+                    <option value="AD">Advertisement</option>
+                    <option value="ER">Employee Referral</option>
+                    <option value="FB">Facebook</option>
+                    <option value="GS">Google Search</option>
+                    <option value="CH">Chat</option> 
+                    <option value="WC">Walk-in Client</option>
+                </select>
+            </div>
+
+
+                <!-- Commercial-specific fields -->
+                <div id="commercial-fields" style="display: none;">
+                    <div class="field">
+                        <label for="business_name">Business Name</label>
+                        <input type="text" id="business_name" name="business_name">
+                    </div>
+                    <div class="field">
+                        <label for="business_type">Business Type</label>
+                        <input type="text" id="business_type" name="business_type">
+                    </div>
+                    <div class="field">
+                        <label for="business_size">Business Size</label>
+                        <input type="text" id="business_size" name="business_size">
+                    </div>
+                    <div class="field">
+                        <label for="business_address">Business Address</label>
+                        <input type="text" id="business_address" name="business_address"></input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-section">
+                <button type="submit">NEXT</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Link to external JavaScript -->
+    <script src="{% static 'js/bio_data.js' %}"></script>
+</body>
+</html>

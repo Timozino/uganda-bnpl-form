@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    
+    <div class="container">
+        
+        <div class="popup">
+            <img src="{% static 'img/tick.png' %}" alt="">
+            <h2>Weldone</h2>
+            <p>You have successfully filled Store Details form</p>
+            <button><a href="{% url 'billing_model'%}">Click Here to continue Billing Model Form</a></button>
+        </div>
+
+    </div>
+    
+</body>
+</html>
