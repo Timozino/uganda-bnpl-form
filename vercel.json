@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "KoolBUY_Deal_Info/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "KoolBUY_Deal_Info/wsgi.py"
+      }
+    ],
+    "env": {
+      "DJANGO_SECRET_KEY": "django-insecure-o_)+dfu3fx2da5&f7(cswpi3@fjdzxv(*u$h$m5d03l$ooo_rx",
+      "DJANGO_DEBUG": "True"
+    }
+  }
+  
