@@ -16,7 +16,7 @@ SECRET_KEY = "django-insecure-o_)+dfu3fx2da5&f7(cswpi3@fjdzxv(*u$h$m5d03l$ooo_rx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["uganda-koolbuy-bnpl-form-a8h5dfdvdzgpage5.canadacentral-01.azurewebsites.net"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
